@@ -10,31 +10,36 @@ def input_check(arguments):
 			return False
 	return True
 
-def play_game(argvs):
+def play_game(argvs, cube):
+	# solver = Solved()
 	if len(argvs) > 0:
 		arguments = argvs.split()
 		if input_check(arguments) == True:
 			for operation in arguments:
-				# cube.turn(operation)
-				x = -250
-				y = 0
-				size = 40
-				cube.draw(x, y, size)
+				cube.turn(operation)
+				# if solver.solved(cube) == False: to give player opportunity to check the cube during game
+				# 	return play_game(input())
+				cube.draw(-250, 0, 40)
+			return(play_game(input(), cube))
 		else:
 			print("Wrong input, please give correct input")
-			return main(input())
+			return(play_game(input(), cube))
 	else:
 		print("No input given")
-		return main(input())
-
+		return(play_game(input(), cube))
 
 def main(argvs):
 	cube = Cube()
-	if argvs.lowercase = "yes":
-		cube.random()
-		play_game(input())
-	if args.lowercase = "no":
-
+	if argvs.lower() == 'yes':
+		# cube.random()
+		cube.draw(-250, 0, 40)
+		play_game(input(), cube)
+	if argvs.lower() == 'no':
+		print("let the algorithm beat this rubiks")
+		# solver = Solved()
+		# solver(cube.random())
 
 if __name__ == "__main__":
 	main(input("Do you want to play a game or see an algorithm beat this rubiks?\n"))
+
+			# self.sides['L'].colour[1] = self.sides['F'].colour[1]
