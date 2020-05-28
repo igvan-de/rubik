@@ -1,4 +1,5 @@
 import turtle
+from rotate import Rotate
 
 class Cube_side:
 
@@ -49,6 +50,7 @@ class Cube:
 		'B' : Cube_side('B', "blue"),
 		'U' : Cube_side('U', "white"),
 		'D' : Cube_side('D', "yellow") }
+		self.turns = Rotate(self.sides)
 
 	def draw(self, x, y, size):
 		window = turtle.Screen()
@@ -65,48 +67,11 @@ class Cube:
 		turtle.hideturtle()
 		turtle.update()
 
-	def turn_row(self, value):
-		for i in range(3):
-			left = self.sides['L'].colour[value]
-			self.sides['L'].colour[value] = self.sides['F'].colour[value]
-			self.sides['F'].colour[value] = self.sides['R'].colour[value]
-			self.sides['R'].colour[value] = self.sides['B'].colour[value]
-			self.sides['B'].colour[value] = left
-			value = value * 2
-
-	def turn_column(self, value):
-		for i in range(3):
-			left = self.sides['F'].colour[value]
-			self.sides['F'].colour[value] = self.sides['D'].colour[value]
-			self.sides['D'].colour[value] = self.sides['B'].colour[value]
-			self.sides['B'].colour[value] = self.sides['U'].colour[value]
-			self.sides['U'].colour[value] = left
-			value = value * 8
-
-	# devide in row and column functions
 	def turn(self, operation):
-		if operation == 'U':
-			value = 1
-			self.turn_row(value)
-			turtle.hideturtle()
-		if operation == 'E':
-			value = 8
-			self.turn_row(value)
-			turtle.hideturtle()
-		if operation == 'D':
-			value = 64
-			self.turn_row(value)
-			turtle.hideturtle()
-		if operation == 'L':
-			value = 1
-			self.turn_column(value)
-			turtle.hideturtle()
-		if operation == 'M':
-			value = 2
-			self.turn_column(value)
-			turtle.hideturtle()
-		if operation == 'R':
-			value = 4
-			self.turn_column(value)
-			turtle.hideturtle()
+		rows = "U U' U2 U2' Uw u u' F F' F2 F2' Fw f f' D D' D2 D2' Dw d d' B B'B2 B2' Bw b b' E E'"
+		column = "R R'R2 R2' Rw r r' L L'L2 L2' Lw l l' M M' S S'"
+		if operation in rows:
+			self.turns.rows_operations(operation)
+		if operation in column:
+			self.turns.column_operations(operation)
 		turtle.update()

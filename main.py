@@ -4,7 +4,7 @@ from cube import Cube
 
 def input_check(arguments):
 	valid = "U U' U2 U2' Uw u u' R R'R2 R2' Rw r r' F F' F2 F2' Fw f f' \
-		D D'D2 D2' Dw d d'L L'L2 L2' Lw l l'B B'B2 B2' Bw b b' M M'E E'S S'"
+		D D' D2 D2' Dw d d'L L' L2 L2' Lw l l' B B' B2 B2' Bw b b' M M' E E' S S'"
 	for arg in arguments:
 		if arg not in valid:
 			return False
@@ -40,6 +40,7 @@ def main(argvs):
 		# solver(cube.random())
 
 if __name__ == "__main__":
-	main(input("Do you want to play a game or see an algorithm beat this rubiks?\n"))
+	main(input("Do you want to play a game or see an algorithm beat this rubiks?\n\
+Say 'yes' to play self, say 'no' to let an algortihm play\n"))
 
 			# self.sides['L'].colour[1] = self.sides['F'].colour[1]
