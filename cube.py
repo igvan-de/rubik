@@ -68,10 +68,13 @@ class Cube:
 		turtle.update()
 
 	def turn(self, operation):
-		rows = "U U' U2 U2' Uw u u' F F' F2 F2' Fw f f' D D' D2 D2' Dw d d' B B'B2 B2' Bw b b' E E'"
-		column = "R R'R2 R2' Rw r r' L L'L2 L2' Lw l l' M M' S S'"
+		rows = "U U' U2 U2' Uw u u' D D' D2 D2' Dw d d'B B'B2 B2' Bw b b' E E'"
+		column = "R R'R2 R2' Rw r r' L L'L2 L2' Lw l l' M M'"
+		special = "F F' F2 F2' Fw f f' B B'B2 B2' Bw b b' S S'"
 		if operation in rows:
 			self.turns.rows_operations(operation)
 		if operation in column:
 			self.turns.column_operations(operation)
+		if operation in special:
+			self.turns.special_operations(operation)
 		turtle.update()
