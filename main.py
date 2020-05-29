@@ -12,19 +12,19 @@ def play_game(argvs, cube, valid):
 	# solver = Solved()
 	if len(argvs) > 0:
 		arguments = argvs.split()
-		if input_check(arguments) == True:
+		if input_check(arguments, valid) == True:
 			for operation in arguments:
 				cube.turn(operation)
 				# if solver.solved(cube) == False: to give player opportunity to check the cube during game
 				# 	return play_game(input())
 				cube.draw(-250, 0, 40)
-			return(play_game(input(), cube))
+			return(play_game(input(), cube, valid))
 		else:
 			print("Wrong input, please give correct input")
-			return(play_game(input(), cube))
+			return(play_game(input(), cube, valid))
 	else:
 		print("No input given")
-		return(play_game(input(), cube))
+		return(play_game(input(), cube, valid))
 
 def main(argvs):
 	cube = Cube()
