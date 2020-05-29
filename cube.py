@@ -1,4 +1,5 @@
 import turtle
+import random
 from rotate import Rotate
 
 class Cube_side:
@@ -78,3 +79,16 @@ class Cube:
 		if operation in special:
 			self.turns.special_operations(operation)
 		turtle.update()
+
+	def random_display(self, x, y, size, operations):
+		rows = "U U' U2 U2' Uw u u' D D' D2 D2' Dw d d'B B'B2 B2' Bw b b' E E'"
+		column = "R R'R2 R2' Rw r r' L L'L2 L2' Lw l l' M M'"
+		special = "F F' F2 F2' Fw f f' B B'B2 B2' Bw b b' S S'"
+		for i in range(15):
+			operation = random.choice(operations)
+			if operation in rows:
+				self.turns.rows_operations(operation)
+			if operation in column:
+				self.turns.column_operations(operation)
+			if operation in special:
+				self.turns.special_operations(operation)

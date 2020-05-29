@@ -33,11 +33,11 @@ class Rotate():
 
 	def turn_column_left(self, value1, value2):
 		for i in range(3):
-			left = self.sides['U'].colour[value1]
-			self.sides['U'].colour[value1] = self.sides['B'].colour[value2]
-			self.sides['B'].colour[value2] = self.sides['D'].colour[value1]
-			self.sides['D'].colour[value1] = self.sides['F'].colour[value1]
-			self.sides['F'].colour[value1] = left
+			left = self.sides['F'].colour[value1]
+			self.sides['F'].colour[value1] = self.sides['D'].colour[value1]
+			self.sides['D'].colour[value1] = self.sides['B'].colour[value2]
+			self.sides['B'].colour[value2] = self.sides['U'].colour[value1]
+			self.sides['U'].colour[value1] = left
 			value1 = value1 * 8
 			value2 = value2 * 8
 
@@ -116,22 +116,27 @@ class Rotate():
 		if operation == 'L':
 			value1 = 1
 			value2 = 4
+			self.turn_column_right(value1, value2)
+		if operation == 'L\'':
+			value1 = 1
+			value2 = 4
 			self.turn_column_left(value1, value2)
-		# if operation == 'L\'':
-		# 	value = 1
-		# 	self.turn_column_left(value)
-		# if operation == 'M':
-		# 	value = 2
-		# 	self.turn_column_right(value)
-		# if operation == 'M\'':
-		# 	value = 2
-		# 	self.turn_column_left(value)
+		if operation == 'M':
+			value1 = 2
+			value2 = 2
+			self.turn_column_right(value1, value2)
+		if operation == 'M\'':
+			value1 = 2
+			value2 = 2
+			self.turn_column_left(value1, value2)
 		if operation == 'R':
 			value1 = 4
 			value2 = 1
 			self.turn_column_right(value1, value2)
-		# if operation == 'R\'':
-		# 	self.turn_column_right()
+		if operation == 'R\'':
+			value1 = 4
+			value2 = 1
+			self.turn_column_left(value1, value2)
 
 	def special_operations(self, operation):
 		if operation == 'F':

@@ -2,15 +2,13 @@ import sys
 import turtle
 from cube import Cube
 
-def input_check(arguments):
-	valid = "U U' U2 U2' Uw u u' R R'R2 R2' Rw r r' F F' F2 F2' Fw f f' \
-		D D' D2 D2' Dw d d'L L' L2 L2' Lw l l' B B' B2 B2' Bw b b' M M' E E' S S'"
+def input_check(arguments, valid):
 	for arg in arguments:
 		if arg not in valid:
 			return False
 	return True
 
-def play_game(argvs, cube):
+def play_game(argvs, cube, valid):
 	# solver = Solved()
 	if len(argvs) > 0:
 		arguments = argvs.split()
@@ -30,10 +28,12 @@ def play_game(argvs, cube):
 
 def main(argvs):
 	cube = Cube()
+	valid = "U U' U2 U2' Uw u u' R R'R2 R2' Rw r r' F F' F2 F2' Fw f f' \
+	D D' D2 D2' Dw d d'L L' L2 L2' Lw l l' B B' B2 B2' Bw b b' M M' E E' S S'"
 	if argvs.lower() == 'yes':
-		# cube.random()
+		cube.random_display(-250, 0, 40, valid.split())
 		cube.draw(-250, 0, 40)
-		play_game(input(), cube)
+		play_game(input(), cube, valid)
 	if argvs.lower() == 'no':
 		print("let the algorithm beat this rubiks")
 		# solver = Solved()
