@@ -9,6 +9,6 @@ You can play the game by cloning the repository:
 ``https://github.com/igvan-de/rubik.git``
 
 Once cloned, run:
-``./rubiks``
+``python ./rubiks``
 
 And follow the text on your screen. Good luck solving the rubiks!
