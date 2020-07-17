@@ -3,7 +3,9 @@
 Work in progress.
 
 This project is made to get more familiar with OOB and classes.
-You can play the game by cloning the repository: 
+
+You can play the game by cloning the repository:
+
 ``https://github.com/igvan-de/rubik.git``
 
 Once cloned, run:
